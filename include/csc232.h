@@ -20,7 +20,7 @@
 
 #define FINISHED_PART_1 TRUE
 #define FINISHED_PART_2 TRUE
-#define FINISHED_PART_3 FALSE
+#define FINISHED_PART_3 TRUE
 
 #include <algorithm>
 #include <cassert>
@@ -87,6 +87,7 @@ namespace csc232
 #endif // FINISHED_PART_1
 
 #if FINISHED_PART_2
+    //// Declaration of the Yorkie class.
     class Yorkie : public Dog
     {
     public:
@@ -97,22 +98,28 @@ namespace csc232
         std::string name;
     };
 
+    //// Implementation of the Yorkie class
+    // Creates a Yorkie with the specified name
     Yorkie::Yorkie(const std::string& dogs_name) : name{ dogs_name }
     {
         std::cout << "A Yorkie named " << name << " was just created." << std::endl;
     }
 
+    // Commands a Yorkie to speak (they respond in shouty-caps)
     std::string Yorkie::speak() const
     {
         std::string response{ "DID YOU SAY SPEAK?" };
+        // Though not put in the ReadMe, I needed to return the response for tests to pass.
         return response;
     }
 
+    // Commands a Yorkie to sit.
     void Yorkie::sit() const
     {
         std::cout << "A Yorkie named " << name << " just sat down." << std::endl;
     }
 
+    //// Declaration of the GreatDaehn class.
     class GreatDaehn : public Dog
     {
     public:
@@ -123,17 +130,22 @@ namespace csc232
         std::string name;
     };
 
+    //// Implementation of the GreatDaehn class
+    // Creates a GreatDaehn with the specified name.
     GreatDaehn::GreatDaehn(const std::string& dogs_name) : name{ dogs_name }
     {
         std::cout << "A GreatDaehn named " << name << " was just created." << std::endl;
     }
 
+    // Commands the GreatDaehn to speak.
     std::string GreatDaehn::speak() const
     {
         std::string response{ "What?" };
+        // Same as above.
         return response;
     }
 
+    // Commands the GreatDaehn to sit.
     void GreatDaehn::sit() const
     {
         std::cout << "A GreatDaehn named " << name << " just sat down." << std::endl;
