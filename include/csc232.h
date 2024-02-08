@@ -99,6 +99,21 @@ namespace csc232
     }
 
     // TODO: Task 2.a.2 - Add your Yorkie definition below
+    Yorkie::Yorkie(const std::string& dogs_name) : name{ dogs_name }
+    {
+        std::cout << "A Yorkie named " << name << " was just created." << std::endl;
+    }
+
+    std::string Yorkie::speak() const
+    {
+        std::string response{ "DID YOU SAY SPEAK?" };
+        return response;
+    }
+
+    void Yorkie::sit() const
+    {
+        std::cout << "A Yorkie named " << name << " just sat down." << std::endl;
+    }
 
     // TODO: Task 2.b.1 - Declare your GreatDaehn class for Task 2b below
 
