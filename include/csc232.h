@@ -18,9 +18,9 @@
 #define TRUE 1
 #define EXECUTE_BLOCK FALSE
 
-#define FINISHED_PART_1 FALSE
-#define FINISHED_PART_2 FALSE
-#define FINISHED_PART_3 FALSE
+#define FINISHED_PART_1 TRUE
+#define FINISHED_PART_2 TRUE
+#define FINISHED_PART_3 TRUE
 
 #include <algorithm>
 #include <cassert>
@@ -61,18 +61,95 @@ using std::setw;
 namespace csc232
 {
 #if FINISHED_PART_1
-    // TODO: Task 1 - Declare your Dog interface below (but before the #endif)
+    /**
+     * @brief A model of a Dog.
+    */
+   class Dog
+   {
+    public:
+        /**
+         * @brief Command the Dog to speak.
+         * @return A translation of what the Dog says in response.
+        */
+       virtual std::string speak() const = 0;
 
+       /**
+        * @brief Command this dog to sit.
+        * @post A message is inserted into std out
+       */
+      virtual void sit() const = 0;
+
+      /**
+       * @brief Virtual dog destructor.
+      */
+     virtual ~Dog() = default;
+   };
 #endif // FINISHED_PART_1
 
 #if FINISHED_PART_2
-    // TODO: Task 2.a.1 - Declare your Yorkie class for Task 2a below
+    //// Declaration of the Yorkie class.
+    class Yorkie : public Dog
+    {
+    public:
+        Yorkie(const std::string& dogs_name);
+        std::string speak() const override;
+        void sit() const override;
+    private:
+        std::string name;
+    };
 
-    // TODO: Task 2.a.2 - Add your Yorkie definition below
+    //// Implementation of the Yorkie class
+    // Creates a Yorkie with the specified name
+    Yorkie::Yorkie(const std::string& dogs_name) : name{ dogs_name }
+    {
+        std::cout << "A Yorkie named " << name << " was just created." << std::endl;
+    }
 
-    // TODO: Task 2.b.1 - Declare your GreatDaehn class for Task 2b below
+    // Commands a Yorkie to speak (they respond in shouty-caps)
+    std::string Yorkie::speak() const
+    {
+        std::string response{ "DID YOU SAY SPEAK?" };
+        // Though not put in the ReadMe, I needed to return the response for tests to pass.
+        return response;
+    }
 
-    // TODO: Task 2.b.2 - Add your GreatDaehn definition below (before the #endif)
+    // Commands a Yorkie to sit.
+    void Yorkie::sit() const
+    {
+        std::cout << "A Yorkie named " << name << " just sat down." << std::endl;
+    }
+
+    //// Declaration of the GreatDaehn class.
+    class GreatDaehn : public Dog
+    {
+    public:
+        GreatDaehn(const std::string& dogs_name);
+        std::string speak() const override;
+        void sit() const override;
+    private:
+        std::string name;
+    };
+
+    //// Implementation of the GreatDaehn class
+    // Creates a GreatDaehn with the specified name.
+    GreatDaehn::GreatDaehn(const std::string& dogs_name) : name{ dogs_name }
+    {
+        std::cout << "A GreatDaehn named " << name << " was just created." << std::endl;
+    }
+
+    // Commands the GreatDaehn to speak.
+    std::string GreatDaehn::speak() const
+    {
+        std::string response{ "What?" };
+        // Same as above.
+        return response;
+    }
+
+    // Commands the GreatDaehn to sit.
+    void GreatDaehn::sit() const
+    {
+        std::cout << "A GreatDaehn named " << name << " just sat down." << std::endl;
+    }
 
 #endif // FINISHED_PART_2
 
